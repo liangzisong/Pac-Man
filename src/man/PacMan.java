@@ -23,16 +23,24 @@ public class PacMan {
 			}
         	r.keyPress(KeyEvent.VK_ENTER);
             //利用nextXXX()方法输出内容
-            String str = input.nextLine();
-            System.out.print("str="+str);
-    		for(int i=0;i<15;i++) {
-    			for(int j=0;j<15;j++) {
-    				System.out.print("* ");
+            String in = input.nextLine();
+            System.out.print("str="+in);
+            //初始化
+    		String[][] str = new String[15][15];
+    		for(int i=0;i<str.length;i++) {
+    			for (int j=0;j<str.length;j++) {
+    				str[i][j]="* ";
     			}
-    			/*if(i==14) {
-    				background.replace(0, 1, "c");
-    			}*/
-    			System.out.println("*");
+    		}
+    		str[14][0]="c ";
+    		for(int i=0;i<str.length;i++) {
+    			for (int j=0;j<str.length;j++) {
+				if("d".equals(in)) {
+					
+				}
+    			System.out.print(str[i][j]);
+    			}
+    			System.out.println();
     		}
     		try {
 				Thread.sleep(1000);
