@@ -12,6 +12,11 @@ public class PacMan {
 	public static void main(String[] args) {
 		StringBuffer background = new StringBuffer("* * * * * * * * * * * * * * *");
 		Scanner input = new Scanner(System.in);
+		//行
+		int manRow = 0;
+		//列
+		int manList = 14;
+		String move = "wu";
         while (true) {
         	Robot r = null;
         	 try {
@@ -32,12 +37,79 @@ public class PacMan {
     				str[i][j]="* ";
     			}
     		}
-    		str[14][0]="c ";
+    		System.out.println("move="+move);
+    			switch (in) {
+				case "d":
+					move = "d";
+					break;
+				case "w":
+					move = "w";
+					break;
+				case "s":
+					move = "s";
+					break;
+				case "a":
+					move = "a";
+					break;
+
+				default:
+					break;
+				}
+    		boolean db = false,ab = false,sb = false,wb = false;
+    		if(manRow == 15) {
+				manRow = 13;
+			}
+    		if(manList == 15) {
+    			manList = 13;
+			}
+    		str[manList][manRow]="c ";
+    		
     		for(int i=0;i<str.length;i++) {
     			for (int j=0;j<str.length;j++) {
-				if("d".equals(in)) {
-					
-				}
+    				//1
+					if("d".equals(move) && db==false) {
+						if(manRow >= 14) {
+							manRow = 13;
+						}
+						manRow++;
+						System.out.println("manRow="+manRow);
+						str[manList][manRow]="c ";
+						move = "d";
+						db=true;
+					}
+					//2
+					if("w".equals(move) && wb==false) {
+						if(manList <= 0) {
+							manList = 1;
+						}
+						manList--;
+						System.out.println("manRow="+manRow);
+						str[manList][manRow]="c ";
+						move = "w";
+						wb=true;
+					}
+					//3
+					if("a".equals(move) && ab==false) {
+						if(manRow <= 0) {
+							manRow = 1;
+						}
+						manRow--;
+						System.out.println("manRow="+manRow);
+						str[manList][manRow]="c ";
+						move = "a";
+						ab=true;
+					}
+					//4
+					if("s".equals(move) && sb==false) {
+						if(manList >= 14) {
+							manList = 13;
+						}
+						manList++;
+						System.out.println("manRow="+manRow);
+						str[manList][manRow]="c ";
+						move = "s";
+						sb=true;
+					}
     			System.out.print(str[i][j]);
     			}
     			System.out.println();
@@ -54,7 +126,9 @@ public class PacMan {
 		//clear();
 	}
 	
-	
+	public static void a() {
+		
+	}
 	
 	public static void clear(){
         for(int i=0;i<30;i++) {
